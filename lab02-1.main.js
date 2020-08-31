@@ -93,20 +93,6 @@ function processRequestResults(error, response, body, callback) {
    * This function must not check for a hibernating instance;
    * it must call function isHibernating.
    */
-    const res = { 
-        data: null, 
-        error: null 
-    }; 
-    if (error) { 
-        res.error = error; 
-    } 
-    if (response && isHibernating(response)) { 
-        res.error = "Instance is Hibernating"; 
-    } else { 
-        res.data = response; 
-    } 
-    
-    return callback(res.data, res.error); 
 }
 
 
@@ -138,21 +124,10 @@ function sendRequest(callOptions, callback) {
    * from the previous lab. There should be no
    * hardcoded values.
    */
-
-    const requestOptions = { 
-        method: callOptions.method, 
-        auth: { 
-        user: options.username, 
-        pass: options.password, 
-        }, 
-        baseUrl: options.url, 
-        uri: uri, 
-    }; 
-    request(requestOptions, (error, response, body) => { 
-    processRequestResults(error, response, body, (processedResults, processedError) => callback(processedResults, processedError)); 
-    }); 
-
-
+  const requestOptions = {};
+  request(requestOptions, (error, response, body) => {
+    processRequestResults(error, response, body, (processedResults, processedError) => callback(processedResults, processedError));
+  });
 }
 
 
