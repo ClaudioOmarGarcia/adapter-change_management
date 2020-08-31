@@ -22,9 +22,9 @@
         },
         "password": {
           "type": "string",
-          "default": "1Asdfgh1234",
+          "default": "$1Asdfgh1234",
           "examples": [
-            "1Asdfgh1234"
+            "$1Asdfgh1234"
           ]
         }
       },
